@@ -7,9 +7,8 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
-import 'package:syncfusion_flutter_core/localizations.dart';
 
-import 'l10n/generated_syncfusion_localizations.dart';
+import 'l10n/generated/generated_syncfusion_localizations.dart';
 
 /// Implementation of localized strings for the Syncfusion widgets
 ///
@@ -45,7 +44,7 @@ abstract class SfGlobalLocalizations implements SfLocalizations {
   final String _localeName;
   //ignore: public_member_api_docs
   static const LocalizationsDelegate<SfLocalizations> delegate =
-      _SfLocalizationsDelegate();
+  _SfLocalizationsDelegate();
 
   /// A value for [MaterialApp.localizationsDelegates] that's typically used by
   /// internationalized apps.
@@ -63,7 +62,7 @@ abstract class SfGlobalLocalizations implements SfLocalizations {
   /// ```
   ///
   static const List<LocalizationsDelegate<dynamic>> delegates =
-      <LocalizationsDelegate<dynamic>>[
+  <LocalizationsDelegate<dynamic>>[
     SfGlobalLocalizations.delegate,
   ];
 }
@@ -72,27 +71,26 @@ class _SfLocalizationsDelegate extends LocalizationsDelegate<SfLocalizations> {
   const _SfLocalizationsDelegate();
 
   @override
-  bool isSupported(Locale locale) =>
-      kSyncfusionSupportedLanguages.contains(locale.languageCode);
+  bool isSupported(Locale locale) => isSupported(locale);
 
   static final Map<Locale, Future<SfLocalizations>> _loadedTranslations =
-      <Locale, Future<SfLocalizations>>{};
+  <Locale, Future<SfLocalizations>>{};
 
   @override
   Future<SfLocalizations> load(Locale locale) {
     assert(isSupported(locale));
     return _loadedTranslations.putIfAbsent(locale, () {
       final String localeName =
-          intl.Intl.canonicalizedLocale(locale.toString());
+      intl.Intl.canonicalizedLocale(locale.toString());
       assert(
-        locale.toString() == localeName,
-        'Flutter does not support the non-standard locale form $locale (which '
-        'might be $localeName',
+      locale.toString() == localeName,
+      'Flutter does not support the non-standard locale form $locale (which '
+          'might be $localeName',
       );
 
-      return SynchronousFuture<SfLocalizations>(getSyncfusionTranslation(
+      return SynchronousFuture<SfLocalizations>(lookupSfLocalizations(
         locale,
-      )!);
+      ));
     });
   }
 
@@ -101,5 +99,5 @@ class _SfLocalizationsDelegate extends LocalizationsDelegate<SfLocalizations> {
 
   @override
   String toString() => 'SfGlobalLocalizations.delegate('
-      '${kSyncfusionSupportedLanguages.length} locales)';
+      '${SfLocalizations.supportedLocales.length} locales)';
 }

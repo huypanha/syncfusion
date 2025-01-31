@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   intl: '>=0.18.1 <0.21.0'
   syncfusion_flutter_core:
     path: ../syncfusion_flutter_core
@@ -18,3 +20,4 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  generate: true

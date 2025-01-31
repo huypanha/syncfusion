@@ -1,0 +1,9 @@
+arb-dir: lib/src/l10n
+template-arb-file: syncfusion_en.arb
+output-localization-file: generated_syncfusion_localizations.dart
+output-class: SfLocalizations
+output-dir: lib/src/l10n/generated
+synthetic-package: false
+format: true
+nullable-getter: true
+suppress-warnings: false
