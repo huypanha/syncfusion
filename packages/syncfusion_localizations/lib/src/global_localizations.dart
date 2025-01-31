@@ -71,7 +71,8 @@ class _SfLocalizationsDelegate extends LocalizationsDelegate<SfLocalizations> {
   const _SfLocalizationsDelegate();
 
   @override
-  bool isSupported(Locale locale) => isSupported(locale);
+  bool isSupported(Locale locale) =>
+      SfLocalizations.supportedLocales.contains(locale);
 
   static final Map<Locale, Future<SfLocalizations>> _loadedTranslations =
   <Locale, Future<SfLocalizations>>{};
